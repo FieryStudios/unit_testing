@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unit testing project</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    //https://quotesondesign.com/api-v4-0/
+    $( document ).ready(function() {
+        $('#quote').on('click', function(e) {
+            e.preventDefault();
+            $.getJSON( {
+
+                url:"http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=",
+                success: function(data) {
+
+                    var post = data.shift(); // The data is an array of posts. Grab the first one.
+                    console.log(post)
+                    $('#quote-content').html(post.content);
+
+                    // If the Source is available, use it. Otherwise hide it.
+                    if (post.link) {
+                        $('#quote-title').html('<a href="' + post.link + '" target="_blank"> -- ' + post.title + '</a>');
+                    }
+                    else{
+                        $('#quote-title').html('-- ' + post.title);
+                    }
+                },
+                cache: false
+            });
+        });
+    });
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Unit testing project</h1>
+
+    <p>A proof of concept to test a simple API project.</p>
+
+    <a id="quote" href="" class="btn btn-primary">Get a quote.</a>
+
+    <div style="max-width: 60%; margin: 20px auto;">
+        <h3 id="quote-content"></h3>
+
+        <h5 id="quote-title" style="text-align:right"></h5>
+
+    </div>
+</div>
+
+
+</body>
+</html>
