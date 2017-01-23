@@ -37,5 +37,11 @@ describe("Test Form", function(){
         expect(quoteSpy).toHaveBeenTriggered();
     });
 
+	it("should find the main.js Setup function", function() {
+		Setup.init();
+		$('#quote').click();
+
+	});
+
 
 });
