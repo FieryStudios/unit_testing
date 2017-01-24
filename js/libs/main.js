@@ -20,9 +20,6 @@ var Setup = {
                     else{
                         $('#quote-title').html('-- ' + post.title);
                     }
-
-
-
                 },
                 cache: false
             });

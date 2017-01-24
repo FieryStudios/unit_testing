@@ -85,4 +85,11 @@ describe("Test Form", function(){
 
         expect('#quote-content').toContainText("Delete");
     });
+
+	//TODO: Create actual AJAX test.
+	// Actual Ajax test seems impossible. Will move on to angular tests instead of beating this
+	// dead proof-of-concept.
+
+
+
 });
