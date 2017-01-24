@@ -15,10 +15,21 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'js/libs/*.js',
-      'js/tests/unit_tests.js'
+      // Source and spec files
+      {
+        pattern: 'js/**/*.js',
+        watched: true,
+        served: true,
+        included: true
+      },
+      // Fixtures -- has to be here for load fixtures to work
+      {
+        pattern: 'spec/javascripts/fixtures/index.html',
+        watched: false,
+        served: true,
+        included: false
+      }
     ],
-
 
     // list of files to exclude
     exclude: [
@@ -57,7 +68,7 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     //browsers: ['Chrome', 'PhantomJS'],
-	  browsers: ['Chrome'],
+	  browsers: ['PhantomJS'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
